@@ -1,45 +1,5 @@
-# 开发文件
-.git
 .gitignore
-.vscode
-.idea
-
-# 测试文件
-test
-tests
-__tests__
-*.test.js
-*.spec.js
-
-# 文档
-*.md
-!LICENSE.md
-docs
-CHANGELOG
-
-# 配置文件
-.editorconfig
-.eslintrc*
-.prettierrc*
-tsconfig.json
-jest.config.js
-
-# 依赖
-node_modules
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
-# 临时文件
-*.log
-*.tmp
-*.temp
+.npmignore
+.vscode/
+.idea/
 .DS_Store
-Thumbs.db
-
-# 开发工具
-.nyc_output
-coverage
-.coverage
-.vscode
-.idea
