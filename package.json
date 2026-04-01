@@ -5,10 +5,10 @@
   "license": "MIT",
   "author": "lianginx",
   "repository": "github:lianginx/bilibili-mcp",
-  "homepage": "https://github.com/lianginx/bilibili-mcp",
   "bugs": {
     "url": "https://github.com/lianginx/bilibili-mcp/issues"
   },
+  "readme": "",
   "publishConfig": {
     "access": "public"
   },
