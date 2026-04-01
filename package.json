@@ -4,6 +4,11 @@
   "description": "哔哩哔哩 MCP Server，支持获取热门排行榜、搜索视频、获取用户投稿列表等功能",
   "license": "MIT",
   "author": "lianginx",
+  "repository": "github:lianginx/bilibili-mcp",
+  "homepage": "https://github.com/lianginx/bilibili-mcp",
+  "bugs": {
+    "url": "https://github.com/lianginx/bilibili-mcp/issues"
+  },
   "publishConfig": {
     "access": "public"
   },
