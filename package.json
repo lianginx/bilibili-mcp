@@ -1,6 +1,6 @@
 {
   "name": "@lianginx/bilibili-mcp",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "哔哩哔哩 MCP Server，支持获取热门排行榜、搜索视频、获取用户投稿列表等功能",
   "license": "MIT",
   "author": "lianginx",
