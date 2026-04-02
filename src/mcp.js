@@ -3,7 +3,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod'
-import { getHotRank, searchVideos, getFollows, getVideos } from './commands/index.js'
+import { getHotRank, searchVideos, getVideos, getUesr } from './commands/index.js'
 
 const server = new McpServer({
   name: 'bili-mcp',
@@ -42,16 +42,16 @@ server.registerTool('search_videos',
   }
 )
 
-server.registerTool('get_video_list',
+server.registerTool('get_videos',
   {
     description: '获取用户投稿列表',
     inputSchema: z.object({
-      userId: z.string().describe('用户 UID'),
+      uid: z.string().describe('用户 UID'),
       limit: z.number().default(5).describe('获取页数，每页约 40 个'),
     }),
   },
-  async ({ userId, limit }) => {
-    const results = await getVideos(userId, limit)
+  async ({ uid, limit }) => {
+    const results = await getVideos(uid, limit)
     return {
       content: [{
         type: 'text',
@@ -61,21 +61,23 @@ server.registerTool('get_video_list',
   }
 )
 
-// server.registerTool('get_follows',
-//   {
-//     description: '获取用户关注列表',
-//     inputSchema: z.object({ userId: z.string().describe('用户 UID') }),
-//   },
-//   async ({ userId }) => {
-//     const results = await getFollows(userId)
-//     return {
-//       content: [{
-//         type: 'text',
-//         text: JSON.stringify(results, null, 2)
-//       }]
-//     }
-//   }
-// )
+server.registerTool('get_user',
+  {
+    description: '获取用户信息',
+    inputSchema: z.object({
+      uid: z.string().describe('用户 UID'),
+    }),
+  },
+  async ({ uid }) => {
+    const results = await getUesr(uid)
+    return {
+      content: [{
+        type: 'text',
+        text: JSON.stringify(results, null, 2)
+      }]
+    }
+  }
+)
 
 const transport = new StdioServerTransport()
 await server.connect(transport)

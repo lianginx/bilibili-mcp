@@ -1,6 +1,6 @@
 import { useBrowserContext } from '../core/browser.js'
 
-export async function getVideos(userId, limit = 5) {
+export async function getVideos(uid, limit = 5) {
   const { context } = await useBrowserContext();
 
   try {
@@ -10,7 +10,7 @@ export async function getVideos(userId, limit = 5) {
     const page = context.pages()[0];
 
     // 访问用户视频列表页面
-    await page.goto(`https://space.bilibili.com/${userId}/upload/video`);
+    await page.goto(`https://space.bilibili.com/${uid}/upload/video`);
 
     // 切换列表视图
     const switchListView = await page.waitForSelector('.lists-view-mode__action')
