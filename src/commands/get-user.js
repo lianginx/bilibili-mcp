@@ -1,8 +1,5 @@
 import { useBrowserContext } from '../core/browser.js'
 
-console.log(await getUesr(1))
-console.log(await getUesr(1029260825))
-
 export async function getUesr(uid) {
   const { context } = await useBrowserContext();
 
