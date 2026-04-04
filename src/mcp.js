@@ -3,7 +3,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod'
-import { getHotRank, searchVideos, searchUsers, getVideos, getUesr } from './commands/index.js'
+import { getHotRank, searchVideos, searchUsers, searchBangumi, getVideos, getUesr } from './commands/index.js'
 
 const server = new McpServer({
   name: 'bili-mcp',
@@ -52,6 +52,25 @@ server.registerTool('search_users',
   },
   async ({ keyword, limit }) => {
     const results = await searchUsers(keyword, limit)
+    return {
+      content: [{
+        type: 'text',
+        text: JSON.stringify(results, null, 2)
+      }]
+    }
+  }
+)
+
+server.registerTool('search_bangumi',
+  {
+    description: '搜索哔哩哔哩番剧',
+    inputSchema: z.object({
+      keyword: z.string().describe('搜索关键词'),
+      limit: z.number().default(3).describe('获取页数，每页约 12 个'),
+    }),
+  },
+  async ({ keyword, limit }) => {
+    const results = await searchBangumi(keyword, limit)
     return {
       content: [{
         type: 'text',
